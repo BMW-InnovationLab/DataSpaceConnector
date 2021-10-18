@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.util.HashMap;
 import java.util.Map;
 
 // TODO maybe create simple class hierarchy for the asset types (file, api, etc.)
@@ -55,7 +56,7 @@ public class Asset {
         private String id;
         private String title;
         private String version;
-        private Map<String, String> labels;
+        private Map<String, String> labels = new HashMap<>();
 
         private Builder() {
         }
