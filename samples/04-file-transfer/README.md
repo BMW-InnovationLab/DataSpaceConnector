@@ -162,3 +162,17 @@ INFO 2021-09-07T17:24:42.568555 Data transfer request initiated
 ```
 
 then check `/path/on/yourmachine`, which should now contain a file named `test-document.txt`.
+
+
+# Start with the local DAPS instance
+
+Start the Daps service, then:
+**Consumer**
+```
+./gradlew samples:04-file-transfer:consumer:build && (cd samples/04-file-transfer/consumer; java -jar -Dedc.fs.config=config.properties -Dedc.keystore=../../../extensions/iam/daps/src/test/resources/keystore.p12 -Dedc.keystore.password=1234 build/libs/consumer.jar)
+```
+
+**Provider**
+```
+./gradlew samples:04-file-transfer:provider:build && (cd samples/04-file-transfer/provider; java -jar -Dweb.http.port=8182 -Dedc.keystore=../../../extensions/iam/daps/src/test/resources/keystore.p12 -Dedc.keystore.password=1234 -Dedc.fs.config=config.properties build/libs/provider.jar)
+```

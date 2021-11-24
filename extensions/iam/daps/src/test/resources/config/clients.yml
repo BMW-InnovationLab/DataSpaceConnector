@@ -6,6 +6,7 @@
   - omejdn:write
   - openid
   - idsc:IDS_CONNECTOR_ATTRIBUTES_ALL
+  - consumer
   attributes:
   - key: omejdn
   - value: admin

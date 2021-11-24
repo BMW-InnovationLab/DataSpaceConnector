@@ -4,12 +4,12 @@ path_prefix: "/opt"
 bind_to: 0.0.0.0
 allow_origin: "*"
 app_env: debug
-accept_audience: idsc:IDS_CONNECTORS_ALL
+accept_audience: edc-provider
 token:
   expiration: 3600
   signing_key: keys/signing_key.pem
   algorithm: RS256
-  audience: idsc:IDS_CONNECTORS_ALL
+  audience: edc-provider
   issuer: http://localhost:4567
 id_token:
   expiration: 3600

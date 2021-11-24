@@ -29,7 +29,10 @@ dependencies {
     implementation(project(":extensions:in-memory:policy-registry-memory"))
 
     implementation(project(":extensions:filesystem:configuration-fs"))
+    implementation(project(":extensions:filesystem:vault-fs"))
+
     implementation(project(":extensions:iam:iam-mock"))
+    implementation(project(":extensions:iam:oauth2:oauth2-core"))
 
     implementation(project(":data-protocols:ids"))
     implementation(project(":data-protocols:ids:ids-policy-mock"))
