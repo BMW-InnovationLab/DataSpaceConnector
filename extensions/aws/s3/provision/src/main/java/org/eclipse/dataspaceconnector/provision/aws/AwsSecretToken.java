@@ -22,10 +22,12 @@ import java.util.Map;
 public class AwsSecretToken implements SecretToken {
     private final String accessKeyId;
     private final String secretAccessKey;
+    private final String sessionToken;
 
-    public AwsSecretToken(@JsonProperty("accessKeyId") String accessKeyId, @JsonProperty("secretAccessKey") String secretAccessKey) {
+    public AwsSecretToken(@JsonProperty("accessKeyId") String accessKeyId, @JsonProperty("secretAccessKey") String secretAccessKey, @JsonProperty("sessionToken") String sessionToken) {
         this.accessKeyId = accessKeyId;
         this.secretAccessKey = secretAccessKey;
+        this.sessionToken = sessionToken;
     }
 
     @Override

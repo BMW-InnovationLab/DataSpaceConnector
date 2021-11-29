@@ -23,8 +23,8 @@ dependencies {
     api(project(":spi"))
 
     api(project(":extensions:aws:s3:provision"))
-    implementation(project(":extensions:azure:blob:api"))
     implementation(project(":extensions:in-memory:assetindex-memory"))
 
     implementation("jakarta.ws.rs:jakarta.ws.rs-api:${rsApi}")
+    testImplementation(testFixtures(project(":extensions:aws:aws-test")))
 }

@@ -36,8 +36,8 @@ dependencies {
     implementation(project(":extensions:in-memory:assetindex-memory"))
 
     implementation(project(":extensions:iam:iam-mock"))
-    implementation(project(":extensions:azure:vault"))
     implementation(project(":extensions:aws:s3:provision"))
+    implementation(project(":extensions:filesystem:vault-fs"))
 
     implementation(project(":extensions:api:control"))
 

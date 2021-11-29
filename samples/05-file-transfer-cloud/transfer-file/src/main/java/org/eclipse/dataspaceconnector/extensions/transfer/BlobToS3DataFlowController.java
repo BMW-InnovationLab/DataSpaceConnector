@@ -1,6 +1,5 @@
 package org.eclipse.dataspaceconnector.extensions.transfer;
 
-import org.eclipse.dataspaceconnector.common.azure.BlobStoreApiImpl;
 import org.eclipse.dataspaceconnector.spi.asset.DataAddressResolver;
 import org.eclipse.dataspaceconnector.spi.monitor.Monitor;
 import org.eclipse.dataspaceconnector.spi.security.Vault;
@@ -69,8 +68,6 @@ public class BlobToS3DataFlowController implements DataFlowController {
         switch (destinationType) {
             case "AmazonS3":
                 return new S3BucketWriter(monitor, typeManager);
-            case "AzureStorage":
-                return new BlobStoreWriter(monitor, typeManager);
             default:
                 throw new IllegalArgumentException("Unknown source type " + destinationType);
         }
@@ -80,9 +77,7 @@ public class BlobToS3DataFlowController implements DataFlowController {
     private @NotNull DataReader getReader(String sourceType) {
         switch (sourceType) {
             case "AmazonS3":
-                return new S3BucketReader();
-            case "AzureStorage":
-                return new BlobStoreReader(new BlobStoreApiImpl(vault));
+                return new S3BucketReader(monitor, typeManager, vault);
             default:
                 throw new IllegalArgumentException("Unknown source type " + sourceType);
         }

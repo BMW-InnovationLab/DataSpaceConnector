@@ -48,6 +48,9 @@ public class AwsProvisionExtension implements ServiceExtension {
     @EdcSetting
     private static final String AWS_SECRET_KEY = "edc.aws.secret.access.key";
 
+    @EdcSetting
+    private static final String AWS_SECRET_TOKEN = "edc.aws.access.token";
+
     private Monitor monitor;
     private SdkClientProvider clientProvider;
 
@@ -116,8 +119,14 @@ public class AwsProvisionExtension implements ServiceExtension {
             secretKey = "empty_secret_key";
         }
 
+        var sessionToken = vault.resolveSecret(AwsProvisionExtension.AWS_SECRET_TOKEN);
+        if (sessionToken == null) {
+            monitor.severe("AWS session token was not found in the vault");
+            sessionToken = "empty_session_token";
+        }
+
         if (vault.resolveSecret("aws-credentials") == null) {
-            vault.storeSecret("aws-credentials", context.getTypeManager().writeValueAsString(new AwsSecretToken(accessKey, secretKey)));
+            vault.storeSecret("aws-credentials", context.getTypeManager().writeValueAsString(new AwsSecretToken(accessKey, secretKey, sessionToken)));
         }
         var credentials = AwsBasicCredentials.create(accessKey, secretKey);
 

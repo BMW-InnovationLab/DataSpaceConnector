@@ -34,7 +34,6 @@ dependencies {
     implementation(project(":extensions:in-memory:policy-registry-memory"))
     implementation(project(":extensions:filesystem:configuration-fs"))
     implementation(project(":extensions:iam:iam-mock"))
-    implementation(project(":extensions:azure:vault"))
 
     implementation(project(":data-protocols:ids"))
     implementation(project(":data-protocols:ids:ids-policy-mock"))

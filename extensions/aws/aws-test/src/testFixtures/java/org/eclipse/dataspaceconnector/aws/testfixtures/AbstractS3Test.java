@@ -82,7 +82,7 @@ public abstract class AbstractS3Test {
         return "test-bucket-" + processId + "-" + REGION;
     }
 
-    private @NotNull AwsCredentials getCredentials() {
+    protected @NotNull AwsCredentials getCredentials() {
         String profile = propOrEnv("AWS_PROFILE", null);
         if (profile != null) {
             return ProfileCredentialsProvider.create(profile).resolveCredentials();
