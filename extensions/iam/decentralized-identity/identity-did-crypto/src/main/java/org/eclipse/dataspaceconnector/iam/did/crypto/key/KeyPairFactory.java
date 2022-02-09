@@ -39,7 +39,7 @@ public class KeyPairFactory {
     public static JWK generateKeyPair() {
         try {
 
-            ECGenParameterSpec ecSpec = new ECGenParameterSpec("secp256k1");
+            ECGenParameterSpec ecSpec = new ECGenParameterSpec("secp256r1");
             KeyPairGenerator g = KeyPairGenerator.getInstance("EC");
             g.initialize(ecSpec, new SecureRandom());
             KeyPair keyPair = g.generateKeyPair();

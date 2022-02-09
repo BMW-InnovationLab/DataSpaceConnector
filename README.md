@@ -25,7 +25,7 @@ For detailed information about the project, please have a look at our [Documenta
 
 ## Checkout and build code
 
-The project requires JDK 11+. To get started:
+The project requires JDK 17+. To get started:
 
 ``` shell 
 git clone git@github.com:eclipse-dataspaceconnector/DataSpaceConnector.git
