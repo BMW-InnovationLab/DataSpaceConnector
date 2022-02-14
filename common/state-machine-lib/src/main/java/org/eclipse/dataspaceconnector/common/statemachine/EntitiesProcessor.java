@@ -12,7 +12,7 @@
  *
  */
 
-package org.eclipse.dataspaceconnector.common.stream;
+package org.eclipse.dataspaceconnector.common.statemachine;
 
 import java.util.Collection;
 import java.util.function.Function;
@@ -29,22 +29,24 @@ import java.util.function.Supplier;
  *
  * @param <T> the entity that is processed
  */
-public class EntitiesProcessor<T> {
+public class EntitiesProcessor<T> implements Processor {
 
     private final Supplier<Collection<T>> entities;
+    private final Function<T, Boolean> process;
     private final Predicate<Boolean> isProcessed = it -> it;
 
-    public EntitiesProcessor(Supplier<Collection<T>> entitiesSupplier) {
+    public EntitiesProcessor(Supplier<Collection<T>> entitiesSupplier, Function<T, Boolean> process) {
         this.entities = entitiesSupplier;
+        this.process = process;
     }
 
     /**
      * Process the entities retrieved by the supplier with the function specified
      *
-     * @param process the function that will be applied to the entities. Returns true if the entity is processed, false otherwise
      * @return the processed entities count
      */
-    public long doProcess(Function<T, Boolean> process) {
+    @Override
+    public Long run() {
         return entities.get().stream()
                 .map(process)
                 .filter(isProcessed)
